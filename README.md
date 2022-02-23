@@ -12,7 +12,7 @@
 
 ## USE
 
-## Step1
+### Step1
 Create config file config/example.json
 
 ```
@@ -29,4 +29,8 @@ Create config file config/example.json
     }
 }
 
+```
+### Step 2
+```
+mqtt_client.MQTTInit("your_path_config", "your_file_config")
 ```
