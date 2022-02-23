@@ -6,7 +6,7 @@
 ```
 
 ## Import
-```go
+```golang
     improt mqtt_client "github.com/tinobt/mqtt_client"
 ```
 
@@ -31,6 +31,6 @@ Create config file config/example.json
 
 ```
 ### Step 2
-```
+```golang
 mqtt_client.MQTTInit("your_path_config", "your_file_config")
 ```
