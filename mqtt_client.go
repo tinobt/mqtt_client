@@ -17,7 +17,6 @@ func MQTTInit(pathFile string, nameFile string) {
 	// viper.AddConfigPath("./../config")
 
 	viper.SetConfigName(nameFile)
-
 	viper.AddConfigPath(pathFile)
 
 	configError := viper.ReadInConfig()
