@@ -1,4 +1,4 @@
-module tino.mqtt_client
+module github.com/tinobt/mqtt_client
 
 go 1.16
 
