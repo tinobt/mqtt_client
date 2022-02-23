@@ -7,14 +7,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-var f MQTT.MessageHandler = func(client MQTT.Client, msg MQTT.Message) {
-	fmt.Printf("MSG: %s\n", msg.Payload())
-}
+func MQTTInit(pathFile string, nameFile string, callback func(payload []byte)) {
 
-func MQTTInit(pathFile string, nameFile string) {
-	// viper.SetConfigName("global")
-
-	// viper.AddConfigPath("./../config")
+	var f MQTT.MessageHandler = func(client MQTT.Client, msg MQTT.Message) {
+		callback(msg.Payload())
+	}
 
 	viper.SetConfigName(nameFile)
 	viper.AddConfigPath(pathFile)
