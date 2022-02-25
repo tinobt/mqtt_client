@@ -7,6 +7,16 @@ import (
 	"github.com/spf13/viper"
 )
 
+var ClientTmp MQTT.Client
+
+type MQTTClientAPI struct {}
+
+func (client MQTTClientAPI) Publish(mess string) {
+	topic := viper.GetString("mqtt_client.topic")
+	ClientTmp.Publish(topic, 0, true, mess)
+}
+
+
 func MQTTInit(pathFile string, nameFile string, callback func(payload []byte)) {
 
 	var f MQTT.MessageHandler = func(client MQTT.Client, msg MQTT.Message) {
@@ -44,12 +54,12 @@ func MQTTInit(pathFile string, nameFile string, callback func(payload []byte)) {
 		}
 	}
 	client := MQTT.NewClient(opts)
-
+	ClientTmp = client
+	
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
 		fmt.Println("Error", token)
 		panic(token.Error())
 	} else {
 		fmt.Printf("Connected to server\n")
 	}
-
 }

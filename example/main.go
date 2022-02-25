@@ -5,9 +5,8 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	mqtt_client "github.com/tinobt/mqtt_client"
-	
 	"github.com/spf13/viper"
+	sourse "./../"
 )
 
 var configPort string
@@ -28,6 +27,8 @@ func main() {
 		panic("Fatal error")
 	}
 
-	MQTTInit("./config", "global", f)
+	sourse.MQTTInit("./config", "global", f)
+	api := sourse.MQTTClientAPI{}
+	api.Publish("This is my message for you right now")
 	<-c
 }
